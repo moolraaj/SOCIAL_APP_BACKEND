@@ -26,7 +26,7 @@ export const globalErrorHandler = (
   err.statusCode = err.statusCode || 500;
   err.status = err.status || 'error';
 
-  // Development error - more details
+  
   if (process.env.NODE_ENV === 'development') {
     res.status(err.statusCode).json({
       status: err.status,
@@ -35,7 +35,7 @@ export const globalErrorHandler = (
       stack: err.stack
     });
   } 
-  // Production error - limited info
+  
   else {
     if (err.isOperational) {
       res.status(err.statusCode).json({
@@ -43,7 +43,7 @@ export const globalErrorHandler = (
         message: err.message
       });
     } else {
-      console.error('ERROR 💥', err);
+      console.error('ERROR', err);
       res.status(500).json({
         status: 'error',
         message: 'Something went wrong!'
