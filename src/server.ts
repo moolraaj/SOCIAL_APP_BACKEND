@@ -30,7 +30,7 @@ app.use("/uploads", express.static(uploadsDir));
 
 app.use("/api/posts", postRoutes);
 
-app.get("/api/health", (_req: Request, res: Response) => {
+app.get("/", (_req: Request, res: Response) => {
   res.status(200).json({
     status: "ok",
     message: "Social Media API is running",

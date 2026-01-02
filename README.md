@@ -89,6 +89,7 @@ Server will run on:
 
 http://localhost:5000
 
+
 🔌 API Endpoints
 ➕ Create Post
 
