@@ -124,6 +124,14 @@ Request Body:
   "text": "Nice post!"
 }
 
+PATCH /api/posts/:postId/comments/:commentId
+
+{
+  "text": "Updated comment text"
+}
+
+DELETE /api/posts/:postId/comments/:commentId
+
 🧪 API Testing Example
 curl https://social-app-backend-9dgn.onrender.com/api/posts
 
