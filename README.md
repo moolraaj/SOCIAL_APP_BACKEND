@@ -157,11 +157,8 @@ Backend deployed on Render
 
 Uses MongoDB Atlas for database
 
-Static image serving via /uploads
 
-
-
-########################## Deployment Note
+########################## Deployment Note #####################
 The backend is deployed on Render (free tier).
 Due to free-tier limitations, the server may go into sleep mode when inactive.
 If the API feels slow or unresponsive:
@@ -169,10 +166,8 @@ If the API feels slow or unresponsive:
 - Or refresh the page once
 This is a deployment limitation, not an application issue.
 
-
+###########################
 🧠 Architecture Decision (Why Cloudinary?)
-
 Local image storage (/uploads) is unreliable on cloud platforms due to ephemeral filesystems.
 To ensure reliability in production:
-
 Images are uploaded to Cloudinary and only the secure URL is stored in MongoDB.
