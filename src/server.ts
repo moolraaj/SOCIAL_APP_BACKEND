@@ -5,7 +5,7 @@ import dotenv from "dotenv";
 import fs from "fs";
 import postRoutes from "./routes/postRoutes";
 import connectDB from "./config/db";
-import { globalErrorHandler } from "./controllers/errorHandler";
+import { globalErrorHandler } from "./middleware/errorHandler";
 
 dotenv.config();
 
@@ -23,7 +23,7 @@ const uploadsDir = path.join(rootDir, "uploads");
 
 if (!fs.existsSync(uploadsDir)) {
   fs.mkdirSync(uploadsDir, { recursive: true });
-  console.log("📁 Uploads directory ensured");
+  console.log("Uploads directory ensured");
 }
 
 app.use("/uploads", express.static(uploadsDir));
@@ -41,5 +41,5 @@ app.get("/api/health", (_req: Request, res: Response) => {
 app.use(globalErrorHandler);
 
 app.listen(PORT, () => {
-  console.log(`🚀 Server running on port ${PORT}`);
+  console.log(`Server running on port ${PORT}`);
 });

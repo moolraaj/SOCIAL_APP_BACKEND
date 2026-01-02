@@ -1,6 +1,6 @@
 import multer from "multer";
 import path from "path";
-import { AppError } from "../controllers/errorHandler";
+import { AppError } from "./errorHandler";
 
  
 const storage = multer.diskStorage({

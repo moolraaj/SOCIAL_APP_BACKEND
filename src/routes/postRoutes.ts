@@ -3,8 +3,7 @@ import {
   createPost,
   getPosts,
   getPost,
-  addComment,
-  deleteComment
+  addComment
 } from "../controllers/postController";
 import { upload } from "../middleware/upload";
 import {
@@ -33,6 +32,4 @@ router
 
 router
   .route("/:postId/comments/:commentId")
-  .delete(deleteComment);
-
 export default router;

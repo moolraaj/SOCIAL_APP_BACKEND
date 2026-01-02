@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from "express";
-import { AppError } from "../controllers/errorHandler";
+import { AppError } from "./errorHandler";
 
  
 export const validateImageUpload = (req: Request, res: Response, next: NextFunction) => {
