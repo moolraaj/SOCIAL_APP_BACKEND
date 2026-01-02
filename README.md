@@ -12,7 +12,6 @@ It provides REST APIs to upload posts with images, fetch posts, and add comments
 ## 🔗 Live URLs
 
 - **Backend API (Render):** https://social-app-backend-9dgn.onrender.com
-- **Health Check:** https://social-app-backend-9dgn.onrender.com/api/health
 - **GitHub Repo:** https://github.com/moolraaj/SOCIAL_APP_BACKEND
 
 ---
