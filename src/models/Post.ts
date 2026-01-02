@@ -1,17 +1,15 @@
-import mongoose, { Schema, Document } from "mongoose";
-
+import mongoose, { Schema, Document, Types } from "mongoose";
 interface Comment {
+  _id?: Types.ObjectId;    
   text: string;
   createdAt: Date;
 }
-
 export interface PostDocument extends Document {
   imageUrl: string;
   caption: string;
   createdAt: Date;
   comments: Comment[];
 }
-
 const CommentSchema = new Schema<Comment>({
   text: { type: String, required: true },
   createdAt: { type: Date, default: Date.now }

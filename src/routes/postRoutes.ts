@@ -3,8 +3,11 @@ import {
   createPost,
   getPosts,
   getPost,
-  addComment
+  addComment,
+  updateComment,
+  deleteComment
 } from "../controllers/postController";
+
 import { upload } from "../middleware/upload";
 import {
   validatePost,
@@ -14,6 +17,7 @@ import {
 
 const router = express.Router();
 
+// CREATE POST & GET ALL POSTS
 router
   .route("/")
   .post(
@@ -24,12 +28,25 @@ router
   )
   .get(getPosts);
 
+// GET SINGLE POST
 router.route("/:id").get(getPost);
 
+// ADD COMMENT
 router
   .route("/:id/comments")
   .post(validateComment, addComment);
 
-router
-  .route("/:postId/comments/:commentId")
+// UPDATE COMMENT
+router.patch(
+  "/:postId/comments/:commentId",
+  validateComment,
+  updateComment
+);
+
+// DELETE COMMENT
+router.delete(
+  "/:postId/comments/:commentId",
+  deleteComment
+);
+
 export default router;
