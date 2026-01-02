@@ -4,18 +4,22 @@ import { catchAsync } from "../utils/catchAsync";
 import { AppError } from "../middleware/errorHandler";
 export const createPost = catchAsync(async (req: Request, res: Response) => {
   const { caption } = req.body;
+
   if (!req.file) {
     throw new AppError("Image is required", 400);
   }
+
   const post = await Post.create({
-    imageUrl: `/uploads/${req.file.filename}`,
+    imageUrl: req.file.path, 
     caption: caption.trim()
   });
+
   res.status(201).json({
     status: "success",
     data: { post }
   });
 });
+
 
  
 export const getPosts = catchAsync(async (_req: Request, res: Response) => {

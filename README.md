@@ -35,28 +35,28 @@ It provides REST APIs to upload posts with images, fetch posts, and add comments
 
 src/
 │── config/
-│ └── db.ts # MongoDB connection
+│   ├── db.ts              # MongoDB connection
+│   └── cloudinary.ts      # Cloudinary configuration
 │
 │── controllers/
-│ └── postController.ts # Post & comment logic
+│   └── postController.ts  # Post & comment logic
 │
 │── middleware/
-│ ├── upload.ts # Multer config for image upload
-│ ├── validation.ts # Request validation
-│ └── errorHandler.ts # Global error handling
+│   ├── upload.ts          # Multer + Cloudinary storage
+│   ├── validation.ts      # Request validation
+│   └── errorHandler.ts    # Global error handling
 │
 │── models/
-│ └── Post.ts # Mongoose schema
+│   └── Post.ts            # Mongoose schema
 │
 │── routes/
-│ └── postRoutes.ts # API routes
+│   └── postRoutes.ts      # API routes
 │
 │── utils/
-│ └── catchAsync.ts # Async error wrapper
+│   └── catchAsync.ts      # Async error wrapper
 │
-│── server.ts # Server entry point
-│
-uploads/ # Uploaded images
+│── server.ts              # Server entry point
+
 
 
 ---
@@ -79,6 +79,9 @@ Create a .env file in the root directory and add:
 PORT=5000
 MONGO_URI=your_mongodb_connection_string
 NODE_ENV=development
+CLOUDINARY_CLOUD_NAME=your_cloud_name
+CLOUDINARY_API_KEY=your_api_key
+CLOUDINARY_API_SECRET=your_api_secret
 
 4️⃣ Start the server
 
@@ -166,3 +169,11 @@ If the API feels slow or unresponsive:
 - Please wait 20–30 seconds for the server to wake up
 - Or refresh the page once
 This is a deployment limitation, not an application issue.
+
+
+🧠 Architecture Decision (Why Cloudinary?)
+
+Local image storage (/uploads) is unreliable on cloud platforms due to ephemeral filesystems.
+To ensure reliability in production:
+
+Images are uploaded to Cloudinary and only the secure URL is stored in MongoDB.
