@@ -156,3 +156,13 @@ Backend deployed on Render
 Uses MongoDB Atlas for database
 
 Static image serving via /uploads
+
+
+
+########################## Deployment Note
+The backend is deployed on Render (free tier).
+Due to free-tier limitations, the server may go into sleep mode when inactive.
+If the API feels slow or unresponsive:
+- Please wait 20–30 seconds for the server to wake up
+- Or refresh the page once
+This is a deployment limitation, not an application issue.
